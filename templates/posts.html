@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+База данных
+{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h4>Список Подозрительных Пассажиров</h4>
+
+    <p>
+        __________________________________________________________________________________________________________________________________________________________________
+    </p>
+
+    {% if articles|length > 0 %}
+        {% for el in articles %}
+        <div class="alert alert-info">
+            <h2>{{ el.title }}</h2>
+            <p><b>Pasport: {{ el.intro }}</b></p>
+            <p><b>Tarix: {{ el.date.date() }}</b></p>
+            <a href="/posts/{{ el.id }}" class="btn btn-warning">Детальнее</a>
+
+
+        </div>
+        {% endfor %}
+    {% else %}
+    <p>В базе данных нет информаций</p>
+    {% endif %}
+</div>
+{% endblock %}
